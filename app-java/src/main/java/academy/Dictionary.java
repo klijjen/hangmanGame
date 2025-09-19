@@ -13,6 +13,10 @@ public class Dictionary {
         this.random = new Random();
     }
 
+    public List<Word> getWords() {
+        return words;
+    }
+
     public Word getRandomWord() {
         if (words.isEmpty()) {
             throw new IllegalStateException("Словарь пуст.");
@@ -25,7 +29,7 @@ public class Dictionary {
             .filter(word -> word.getCategory() == category)
             .collect(Collectors.toList());
         if (wordsByCategory.isEmpty()) {
-            throw new IllegalArgumentException("Слова категории '" + category + "' не найдены.");
+            throw new IllegalArgumentException("Слова категории " + category + " не найдены.");
         }
         return wordsByCategory.get(random.nextInt(wordsByCategory.size()));
     }
@@ -35,7 +39,7 @@ public class Dictionary {
             .filter(word -> word.getDifficulty() == difficulty)
             .collect(Collectors.toList());
         if (wordsByDifficulty.isEmpty()) {
-            throw new IllegalArgumentException("Слова со сложностью " + difficulty + " не найдены.");
+            throw new IllegalArgumentException("Слова с уровнем " + difficulty + " не найдены.");
         }
         return wordsByDifficulty.get(random.nextInt(wordsByDifficulty.size()));
     }
@@ -46,8 +50,9 @@ public class Dictionary {
             .filter(word -> word.getDifficulty() == difficulty)
             .collect(Collectors.toList());
         if (wordsByFilter.isEmpty()) {
-            throw new IllegalArgumentException("Слова категории '" + category + " и сложностью " + difficulty + " не найдены.");
+            throw new IllegalArgumentException("Слова категории " + category + " и с уровнем " + difficulty + " не найдены.");
         }
         return wordsByFilter.get(random.nextInt(wordsByFilter.size()));
     }
+
 }
