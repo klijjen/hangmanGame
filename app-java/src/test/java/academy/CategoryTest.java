@@ -25,7 +25,7 @@ class CategoryTest {
 
     @Test
     void testFromNameInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Category.fromName("НесуществующаяКатегория"));
+        assertThrows(IllegalArgumentException.class, () -> Category.fromName("Несуществующая категория"));
     }
 
     @Test

@@ -2,6 +2,7 @@ package academy;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Word {
@@ -16,9 +17,27 @@ public class Word {
                 @JsonProperty("category") String category,
                 @JsonProperty("difficulty") int difficulty,
                 @JsonProperty("clue") String clue) {
-        this.word = word;
-        this.category = Category.fromName(category);
-        this.difficulty = Difficulty.fromLevel(difficulty);
+        if (word == null) {
+            throw new NullPointerException("Слово не может быть null");
+        }
+        if (category == null) {
+            throw new NullPointerException("Категория не может быть null");
+        }
+
+        this.word = word.toLowerCase();
+
+        try {
+            this.category = Category.fromName(category);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+
+        try {
+            this.difficulty = Difficulty.fromLevel(difficulty);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+
         this.clue = clue;
     }
 
@@ -35,12 +54,12 @@ public class Word {
     }
 
     public String getClue() {
-        return clue;
+        return (clue == null ? "К загаданному слову нет подсказок" : clue);
     }
 
     @Override
     public String toString() {
-        return "Слово:" + word + ". Категория - " + category + ", сложность - " + difficulty;
+        return "Слово: " + word + ". Категория - " + category + ", уровень сложности - " + difficulty;
     }
 
     @Override
