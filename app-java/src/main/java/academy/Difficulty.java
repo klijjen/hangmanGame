@@ -32,6 +32,6 @@ public enum Difficulty {
 
     @Override
     public String toString() {
-        return description + '(' + level + ')';
+        return description + " (" + level + ')';
     }
 }
