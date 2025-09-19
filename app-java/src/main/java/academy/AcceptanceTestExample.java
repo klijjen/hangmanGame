@@ -20,6 +20,6 @@ public class AcceptanceTestExample {
         "окно", List.of(entry("окно"::equalsIgnoreCase, () -> "окно;POS"))
     );
     public static final List<Map.Entry<Predicate<String>, Supplier<String>>> UNKNOWN_TEST_WORD = List.of(
-        entry(_ -> true, () -> "Unknown word")
+        entry(word -> true, () -> "Unknown word")
     );
 }

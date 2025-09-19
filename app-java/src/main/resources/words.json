@@ -1,0 +1,58 @@
+{
+    "words": [
+        {
+            "word": "яблоко",
+            "category": "Фрукты",
+            "difficulty": 1,
+            "clue": "самый базовый фрукт"
+        },
+        {
+            "word": "банан",
+            "category": "Фрукты",
+            "difficulty": 1,
+            "clue": "любят обезьяны"
+        },
+        {
+            "word": "апельсин",
+            "category": "Фрукты",
+            "difficulty": 2,
+            "clue": "самый популярный цитрус"
+        },
+        {
+            "word": "морковь",
+            "category": "Овощи",
+            "difficulty": 1,
+            "clue": "оранжевая, растет в земле"
+        },
+        {
+            "word": "помидор",
+            "category": "Овощи",
+            "difficulty": 2,
+            "clue": "синьор ..."
+        },
+        {
+            "word": "брокколи",
+            "category": "Овощи",
+            "difficulty": 3,
+            "clue": "зеленый овощ, похожий на маленькое дерево"
+        },
+        {
+            "word": "собака",
+            "category": "Животные",
+            "difficulty": 1,
+            "clue": ""
+        },
+        {
+            "word": "кот",
+            "category": "Животные",
+            "difficulty": 1,
+            "clue": ""
+        },
+        {
+            "word": "слон",
+            "category": "Животные",
+            "difficulty": 2,
+            "clue": ""
+        }
+    ]
+}
