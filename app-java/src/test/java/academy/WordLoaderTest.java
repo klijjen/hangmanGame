@@ -20,7 +20,6 @@ public class WordLoaderTest {
             Word firstWord = words.get(0);
             assertNotNull(firstWord.getWord());
             assertNotNull(firstWord.getCategory());
-            assertNotNull(firstWord.getDifficulty());
             assertNotNull(firstWord.getClue());
         }
 

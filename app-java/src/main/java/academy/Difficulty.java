@@ -1,37 +1,37 @@
 package academy;
 
 public enum Difficulty {
-    EASY(1, "Легкий"),
-    MEDIUM(2, "Средний"),
-    HARD(3, "Сложный");
+    EASY(8, "Легкий"),
+    MEDIUM(6, "Средний"),
+    HARD(4, "Сложный");
 
-    private final int level;
+    private final int maxAttempts;
     private final String description;
 
-    Difficulty(int level, String description) {
-        this.level = level;
+    Difficulty(int maxAttempts, String description) {
+        this.maxAttempts = maxAttempts;
         this.description = description;
     }
 
-    public int getLevel() {
-        return level;
+    public int getMaxAttempts() {
+        return maxAttempts;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public static Difficulty fromLevel(int level) {
+    public static Difficulty fromDescription(String description) {
         for (Difficulty difficulty : values()) {
-            if (difficulty.level == level) {
+            if (difficulty.description.equals(description)) {
                 return difficulty;
             }
         }
-        throw new IllegalArgumentException("Неизвестный уровень сложности: " + level);
+        throw new IllegalArgumentException("Неизвестный уровень сложности: " + description);
     }
 
     @Override
     public String toString() {
-        return description + " (" + level + ')';
+        return description + " (" + maxAttempts + " попытки)";
     }
 }

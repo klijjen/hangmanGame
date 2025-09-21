@@ -34,25 +34,4 @@ public class Dictionary {
         return wordsByCategory.get(random.nextInt(wordsByCategory.size()));
     }
 
-    public Word getRandomWordByDifficulty(Difficulty difficulty) {
-        List<Word> wordsByDifficulty = words.stream()
-            .filter(word -> word.getDifficulty() == difficulty)
-            .collect(Collectors.toList());
-        if (wordsByDifficulty.isEmpty()) {
-            throw new IllegalArgumentException("Слова с уровнем " + difficulty + " не найдены.");
-        }
-        return wordsByDifficulty.get(random.nextInt(wordsByDifficulty.size()));
-    }
-
-    public Word getRandomWordByCategoryAndDifficulty(Category category, Difficulty difficulty) {
-        List<Word> wordsByFilter = words.stream()
-            .filter(word -> word.getCategory() == category)
-            .filter(word -> word.getDifficulty() == difficulty)
-            .collect(Collectors.toList());
-        if (wordsByFilter.isEmpty()) {
-            throw new IllegalArgumentException("Слова категории " + category + " и с уровнем " + difficulty + " не найдены.");
-        }
-        return wordsByFilter.get(random.nextInt(wordsByFilter.size()));
-    }
-
 }

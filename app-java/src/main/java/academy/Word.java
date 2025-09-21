@@ -8,14 +8,12 @@ import java.util.Objects;
 public class Word {
     private final String word;
     private final Category category;
-    private final Difficulty difficulty;
     private final String clue;
 
 
     @JsonCreator
     public Word(@JsonProperty("word") String word,
                 @JsonProperty("category") String category,
-                @JsonProperty("difficulty") int difficulty,
                 @JsonProperty("clue") String clue) {
         if (word == null) {
             throw new NullPointerException("Слово не может быть null");
@@ -32,12 +30,6 @@ public class Word {
             throw e;
         }
 
-        try {
-            this.difficulty = Difficulty.fromLevel(difficulty);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
-
         this.clue = clue;
     }
 
@@ -49,9 +41,6 @@ public class Word {
         return category;
     }
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
 
     public String getClue() {
         return (clue == null ? "К загаданному слову нет подсказок" : clue);
@@ -59,12 +48,12 @@ public class Word {
 
     @Override
     public String toString() {
-        return "Слово: " + word + ". Категория - " + category + ", уровень сложности - " + difficulty;
+        return "Слово: " + word + ". Категория - " + category;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(word, category, difficulty);
+        return Objects.hash(word, category);
     }
 
     @Override
@@ -73,7 +62,6 @@ public class Word {
         if (obj == null || getClass() != obj.getClass()) return false;
         Word word1 = (Word) obj;
         return Objects.equals(word, word1.word) &&
-            category == word1.category &&
-            difficulty == word1.difficulty;
+            category == word1.category;
     }
 }
