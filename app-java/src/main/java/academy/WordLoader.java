@@ -9,7 +9,7 @@ import java.util.List;
 public class WordLoader {
 
     private WordLoader() { }
-    private static final ObjectMapper objectMapper = new ObjectMapper();;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static List<Word> loadFromJson(String jsonFilePath) {
         try (InputStream inputStream = getResourceStream(jsonFilePath)) {

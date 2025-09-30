@@ -3,8 +3,6 @@ package academy;
 import java.util.Random;
 import java.util.Scanner;
 
-import static academy.Category.values;
-
 public class ConsoleIO {
     private final Scanner scanner;
 

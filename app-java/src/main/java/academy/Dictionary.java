@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Dictionary {
     private List<Word> words;
-    private Random random;
+    private final Random random;
 
     public Dictionary() {
         try {
@@ -39,7 +39,7 @@ public class Dictionary {
     public Word getRandomWordByCategory(Category category) {
         List<Word> wordsByCategory = words.stream()
             .filter(word -> word.getCategory() == category)
-            .collect(Collectors.toList());
+            .toList();
 
         if (wordsByCategory.isEmpty()) {
             throw new IllegalArgumentException("Слова категории " + category + " не найдены.");

@@ -8,9 +8,7 @@ public class Main {
 //            System.out.println(processedArgs[0]);
 //            System.out.println(processedArgs[1]);
             String result = GameEngine.startNonInteractiveGame(processedArgs[0], processedArgs[1]);
-            if (result != null) {
-                System.out.println(result);
-            }
+            System.out.println(result);
         }
 
         // Интерактивный режим (без аргументов)
@@ -25,8 +23,8 @@ public class Main {
             System.out.println("Для неинтерактивного режима укажите два аргумента: загаданное слово и угаданное слово");
             System.out.println("Для интерактивного режима запустите программу без аргументов");
         }
+        System.exit(0);
 
-        return;
     }
 
     private static String[] processSpringBootArgs(String[] args) {

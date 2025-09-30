@@ -9,9 +9,6 @@ public class Word {
     private Category category;
     private String clue;
 
-    public Word() {}
-
-    // Аннотированный конструктор для Jackson
     @JsonCreator
     public Word(@JsonProperty("word") String word,
                 @JsonProperty("category") Category category,

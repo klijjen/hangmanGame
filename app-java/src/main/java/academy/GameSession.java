@@ -75,19 +75,6 @@ public class GameSession {
         return state.toString().trim();
     }
 
-    public String getMaskedResult() {
-        StringBuilder result = new StringBuilder();
-        for (char c : targetWord.getWord().toCharArray()) {
-            if (guessedLetters.contains(Character.toLowerCase(c))) {
-                result.append(c);
-            } else {
-                result.append('*');
-            }
-        }
-        return result.toString();
-    }
-
-    // Геттеры
     public Word getTargetWord() { return targetWord; }
     public Difficulty getDifficulty() { return difficulty; }
     public Set<Character> getGuessedLetters() { return new HashSet<>(guessedLetters); }

@@ -63,7 +63,7 @@ class DictionaryTest {
     void shouldHandleEmptyDictionary() {
         Dictionary emptyDict = new Dictionary(List.of());
         assertTrue(emptyDict.isEmpty());
-        assertThrows(IllegalStateException.class, () -> emptyDict.getRandomWord());
+        assertThrows(IllegalStateException.class, emptyDict::getRandomWord);
     }
 
     @Test
