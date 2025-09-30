@@ -1,48 +1,297 @@
 [
     {
         "word": "яблоко",
-        "category": "Фрукты",
-        "clue": "самый базовый фрукт"
+        "category": "FRUITS",
+        "clue": "Самый популярный фрукт"
     },
     {
         "word": "банан",
-        "category": "Фрукты",
-        "clue": "любят обезьяны"
+        "category": "FRUITS",
+        "clue": "Любят обезьяны"
     },
     {
         "word": "апельсин",
-        "category": "Фрукты",
-        "clue": "самый популярный цитрус"
+        "category": "FRUITS",
+        "clue": "Самый популярный цитрус"
+    },
+    {
+        "word": "виноград",
+        "category": "FRUITS",
+        "clue": "Из него делают вино"
+    },
+    {
+        "word": "клубника",
+        "category": "FRUITS",
+        "clue": "Красная ягода с семечками снаружи"
+    },
+    {
+        "word": "арбуз",
+        "category": "FRUITS",
+        "clue": "Большая ягода с зелёной коркой"
+    },
+    {
+        "word": "лимон",
+        "category": "FRUITS",
+        "clue": "Самый кислый цитрус"
+    },
+    {
+        "word": "груша",
+        "category": "FRUITS",
+        "clue": "Фрукт похожий на лампочку"
+    },
+    {
+        "word": "персик",
+        "category": "FRUITS",
+        "clue": "Пушистый фрукт с косточкой"
+    },
+    {
+        "word": "ананас",
+        "category": "FRUITS",
+        "clue": "Тропический фрукт с колючей шкуркой"
     },
     {
         "word": "морковь",
-        "category": "Овощи",
-        "clue": "оранжевая, растет в земле"
+        "category": "VEGETABLES",
+        "clue": "Оранжевая, растет в земле"
     },
     {
         "word": "помидор",
-        "category": "Овощи",
-        "clue": "синьор ..."
+        "category": "VEGETABLES",
+        "clue": "Синьор ..."
     },
     {
         "word": "брокколи",
-        "category": "Овощи",
-        "clue": "зеленый овощ, похожий на маленькое дерево"
+        "category": "VEGETABLES",
+        "clue": "Зеленый овощ, похожий на маленькое дерево"
+    },
+    {
+        "word": "картофель",
+        "category": "VEGETABLES",
+        "clue": "Второй хлеб"
+    },
+    {
+        "word": "огурец",
+        "category": "VEGETABLES",
+        "clue": "Зеленый и хрустящий"
+    },
+    {
+        "word": "лук",
+        "category": "VEGETABLES",
+        "clue": "Заставляет плакать при нарезке"
+    },
+    {
+        "word": "капуста",
+        "category": "VEGETABLES",
+        "clue": "Из неё делают голубцы"
+    },
+    {
+        "word": "перец",
+        "category": "VEGETABLES",
+        "clue": "Бывает сладкий и острый"
     },
     {
         "word": "собака",
-        "category": "Животные",
-        "clue": ""
+        "category": "ANIMALS",
+        "clue": "Лучший друг человека"
     },
     {
         "word": "кот",
-        "category": "Животные",
-        "clue": ""
+        "category": "ANIMALS",
+        "clue": "Гуляет сам по себе"
     },
     {
         "word": "слон",
-        "category": "Животные",
-        "clue": ""
+        "category": "ANIMALS",
+        "clue": "Имеет хобот и бивни"
+    },
+    {
+        "word": "тигр",
+        "category": "ANIMALS",
+        "clue": "Полосатый хищник"
+    },
+    {
+        "word": "лев",
+        "category": "ANIMALS",
+        "clue": "Царь зверей"
+    },
+    {
+        "word": "медведь",
+        "category": "ANIMALS",
+        "clue": "Любит мёд и зимнюю спячку"
+    },
+    {
+        "word": "волк",
+        "category": "ANIMALS",
+        "clue": "Серый лесной хищник"
+    },
+    {
+        "word": "лиса",
+        "category": "ANIMALS",
+        "clue": "Хитрая и рыжая"
+    },
+    {
+        "word": "заяц",
+        "category": "ANIMALS",
+        "clue": "Длинные уши, быстрые ноги"
+    },
+    {
+        "word": "врач",
+        "category": "PROFESSIONS",
+        "clue": "Лечит людей"
+    },
+    {
+        "word": "учитель",
+        "category": "PROFESSIONS",
+        "clue": "Даёт знания"
+    },
+    {
+        "word": "повар",
+        "category": "PROFESSIONS",
+        "clue": "Готовит еду"
+    },
+    {
+        "word": "инженер",
+        "category": "PROFESSIONS",
+        "clue": "Строит и проектирует"
+    },
+    {
+        "word": "программист",
+        "category": "PROFESSIONS",
+        "clue": "Пишет код"
+    },
+    {
+        "word": "строитель",
+        "category": "PROFESSIONS",
+        "clue": "Возводит здания"
+    },
+    {
+        "word": "водитель",
+        "category": "PROFESSIONS",
+        "clue": "Управляет транспортом"
+    },
+    {
+        "word": "полицейский",
+        "category": "PROFESSIONS",
+        "clue": "Охраняет порядок"
+    },
+    {
+        "word": "россия",
+        "category": "COUNTRIES",
+        "clue": "Самая большая страна в мире"
+    },
+    {
+        "word": "франция",
+        "category": "COUNTRIES",
+        "clue": "Страна Эйфелевой башни"
+    },
+    {
+        "word": "германия",
+        "category": "COUNTRIES",
+        "clue": "Страна автомобилей и пива"
+    },
+    {
+        "word": "италия",
+        "category": "COUNTRIES",
+        "clue": "Страна пиццы и пасты"
+    },
+    {
+        "word": "япония",
+        "category": "COUNTRIES",
+        "clue": "Страна восходящего солнца"
+    },
+    {
+        "word": "канада",
+        "category": "COUNTRIES",
+        "clue": "Страна кленового листа"
+    },
+    {
+        "word": "бразилия",
+        "category": "COUNTRIES",
+        "clue": "Страна карнавалов и футбола"
+    },
+    {
+        "word": "египет",
+        "category": "COUNTRIES",
+        "clue": "Страна пирамид"
+    },
+    {
+        "word": "футбол",
+        "category": "SPORTS",
+        "clue": "Самый популярный вид спорта"
+    },
+    {
+        "word": "баскетбол",
+        "category": "SPORTS",
+        "clue": "Игра с мячом и кольцом"
+    },
+    {
+        "word": "теннис",
+        "category": "SPORTS",
+        "clue": "Игра с ракетками и мячиком"
+    },
+    {
+        "word": "плавание",
+        "category": "SPORTS",
+        "clue": "Спорт в воде"
+    },
+    {
+        "word": "бокс",
+        "category": "SPORTS",
+        "clue": "Кулачный бой в перчатках"
+    },
+    {
+        "word": "хоккей",
+        "category": "SPORTS",
+        "clue": "Игра на льду с шайбой"
+    },
+    {
+        "word": "волейбол",
+        "category": "SPORTS",
+        "clue": "Игра с мячом через сетку"
+    },
+    {
+        "word": "шахматы",
+        "category": "SPORTS",
+        "clue": "Интеллектуальная игра на доске"
+    },
+    {
+        "word": "пицца",
+        "category": "FOOD",
+        "clue": "Итальянское блюдо с тестом и начинкой"
+    },
+    {
+        "word": "суши",
+        "category": "FOOD",
+        "clue": "Японское блюдо с рисом и рыбой"
+    },
+    {
+        "word": "бургер",
+        "category": "FOOD",
+        "clue": "Булочка с котлетой"
+    },
+    {
+        "word": "салат",
+        "category": "FOOD",
+        "clue": "Блюдо из смеси овощей"
+    },
+    {
+        "word": "суп",
+        "category": "FOOD",
+        "clue": "Жидкое горячее блюдо"
+    },
+    {
+        "word": "мороженое",
+        "category": "FOOD",
+        "clue": "Замороженный сладкий десерт"
+    },
+    {
+        "word": "шоколад",
+        "category": "FOOD",
+        "clue": "Сладкое лакомство из какао"
+    },
+    {
+        "word": "торт",
+        "category": "FOOD",
+        "clue": "Праздничный сладкий десерт"
     }
 ]
-

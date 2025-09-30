@@ -2,34 +2,22 @@ package academy;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Locale;
 import java.util.Objects;
 
 public class Word {
-    private final String word;
-    private final Category category;
-    private final String clue;
+    private String word;
+    private Category category;
+    private String clue;
 
+    public Word() {}
 
+    // Аннотированный конструктор для Jackson
     @JsonCreator
     public Word(@JsonProperty("word") String word,
-                @JsonProperty("category") String category,
+                @JsonProperty("category") Category category,
                 @JsonProperty("clue") String clue) {
-        if (word == null) {
-            throw new NullPointerException("Слово не может быть null");
-        }
-        if (category == null) {
-            throw new NullPointerException("Категория не может быть null");
-        }
-
-        this.word = word.toLowerCase();
-
-        try {
-            this.category = Category.fromName(category);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
-
+        this.word = word;
+        this.category = category;
         this.clue = clue;
     }
 
@@ -41,9 +29,16 @@ public class Word {
         return category;
     }
 
-
     public String getClue() {
         return (clue == null ? "К загаданному слову нет подсказок" : clue);
+    }
+
+    public int getLength() {
+        return word.length();
+    }
+
+    public boolean containsLetter (char letter) {
+        return word.toLowerCase().indexOf(Character.toLowerCase(letter)) >= 0;
     }
 
     @Override

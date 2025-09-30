@@ -1,108 +1,79 @@
 package academy;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class WordTest {
-    @Test
-    void testWordCreation() {
-        // Arrange and Act
-        Word word = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
-
-        // Assert
-        assertNotNull(word);
-    }
+class WordTest {
 
     @Test
-    void testWordCreationAndGetters() {
-        // Arrange and Act
-        Word word = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
+    @DisplayName("Должен корректно создавать слово")
+    void shouldCreateWord() {
+        Word word = new Word("компьютер", Category.ANIMALS, "электронное устройство");
 
-        // Assert
-        assertEquals("бегемот", word.getWord());
+        assertEquals("компьютер", word.getWord());
         assertEquals(Category.ANIMALS, word.getCategory());
-        assertEquals("В воде - кочкой, из воды - бочкой", word.getClue());
+        assertEquals("электронное устройство", word.getClue());
+        assertEquals(9, word.getLength());
     }
 
     @Test
-    void testToString() {
-        // Arrange
-        Word word = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
+    @DisplayName("Должен использовать дефолтную подсказку при отсутствии")
+    void shouldUseDefaultClueWhenNull() {
+        Word word = new Word("тест", Category.FRUITS, null);
 
-        // Act
-        String string = word.toString();
+        assertEquals("К загаданному слову нет подсказок", word.getClue());
+    }
 
-        // Assert
-        assertEquals("Слово: бегемот. Категория - Животные", word.toString());
+    @ParameterizedTest
+    @DisplayName("Должен корректно проверять наличие буквы")
+    @CsvSource({
+        "компьютер, к, true",
+        "компьютер, о, true",
+        "компьютер, м, true",
+        "компьютер, х, false",
+        "компьютер, ё, false"
+    })
+    void shouldCheckLetterPresence(String wordStr, char letter, boolean expected) {
+        Word word = new Word(wordStr, Category.ANIMALS, "тест");
+        assertEquals(expected, word.containsLetter(letter));
     }
 
     @Test
-    void testHashCodeSameObjects() {
-        // Arrange
-        Word word1 = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
-        Word word2 = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
+    @DisplayName("Должен игнорировать регистр при проверке букв")
+    void shouldIgnoreCaseWhenCheckingLetters() {
+        Word word = new Word("Компьютер", Category.ANIMALS, "тест");
 
-        // Assert
+        assertTrue(word.containsLetter('к'));
+        assertTrue(word.containsLetter('К'));
+        assertTrue(word.containsLetter('м'));
+        assertTrue(word.containsLetter('М'));
+    }
+
+    @Test
+    @DisplayName("Должен корректно реализовать equals и hashCode")
+    void shouldImplementEqualsAndHashCode() {
+        Word word1 = new Word("тест", Category.FRUITS, "подсказка");
+        Word word2 = new Word("тест", Category.FRUITS, "подсказка");
+        Word word3 = new Word("другое", Category.FRUITS, "подсказка");
+        Word word4 = new Word("тест", Category.ANIMALS, "подсказка");
+
+        assertEquals(word1, word2);
+        assertNotEquals(word1, word3);
+        assertNotEquals(word1, word4);
         assertEquals(word1.hashCode(), word2.hashCode());
     }
 
     @Test
-    void testHashCodeDifferentObjects() {
-        // Arrange
-        Word word1 = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
-        Word word2 = new Word("Лев", "Животные", "Грива");
+    @DisplayName("Должен корректно преобразовываться в строку")
+    void shouldConvertToString() {
+        Word word = new Word("яблоко", Category.FRUITS, "фрукт");
+        String stringRepresentation = word.toString();
 
-        // Assert
-        assertNotEquals(word1.hashCode(), word2.hashCode());
-    }
-
-    @Test
-    void testEqualsSameObjects() {
-        // Arrange
-        Word word1 = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
-        Word word2 = new Word("Бегемот", "Животные", "В воде - кочкой, из воды - бочкой");
-
-        // Assert
-        assertEquals(word1, word2);
-        assertEquals(word2, word1);
-    }
-
-    @Test
-    void testEqualsDifferentObjects() {
-        // Arrange
-        Word word1 = new Word("А", "Животные", "а");
-        Word word2 = new Word("Б", "Животные", "б");
-        Word word3 = new Word("А", "Профессии", "а");
-        Word word4 = new Word("А", "Животные", "а");
-
-        // Assert
-        assertNotEquals(word1, word2); // разные слова
-        assertNotEquals(word1, word3); // разные категории
-        assertNotEquals(word1, null); // сравнение с null
-        assertNotEquals(word1, new Object()); // сравнение с объектом другого класса
-    }
-
-    @Test
-    void testNullValues() {
-        // Arrange & Act & Assert
-        assertThrows(NullPointerException.class, () -> {
-            new Word(null, "животные", "описание");
-        });
-
-        assertThrows(NullPointerException.class, () -> {
-            new Word("огурец", null, "описание");
-        });
-
-        // Подсказка может быть null
-        Word word = new Word("пицца", "еда", null);
-        assertEquals("К загаданному слову нет подсказок", word.getClue());
-    }
-
-    @Test
-    void testNonExistentCategory() {
-        // Arrange & Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Word("слово", "несуществующая", "описание");
-        });
+        assertTrue(stringRepresentation.contains("яблоко"));
+        assertTrue(stringRepresentation.contains("Фрукты"));
     }
 }

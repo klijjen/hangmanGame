@@ -3,6 +3,7 @@ package academy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordLoader {
@@ -30,5 +31,14 @@ public class WordLoader {
     public static Dictionary createDictionaryFromJson(String jsonFilePath) {
         List<Word> words = loadFromJson(jsonFilePath);
         return new Dictionary(words);
+    }
+
+    public static List<Word> getDefaultWords() {
+        List<Word> defaultWords = new ArrayList<>();
+        defaultWords.add(new Word("слон", Category.ANIMALS, "Крупное животное с хоботом"));
+        defaultWords.add(new Word("тигр", Category.ANIMALS, "Полосатый хищник"));
+        defaultWords.add(new Word("баскетбол", Category.SPORTS, "Игра с мячом и кольцом"));
+        defaultWords.add(new Word("пицца", Category.FOOD, "Итальянское блюдо"));
+        return defaultWords;
     }
 }

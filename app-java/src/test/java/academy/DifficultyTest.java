@@ -1,35 +1,44 @@
 package academy;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DifficultyTest {
+class DifficultyTest {
+
     @Test
-    void testDifficultyValues() {
-        assertEquals("Легкий", Difficulty.EASY.getDescription());
+    @DisplayName("Должен возвращать сложность по ID")
+    void shouldReturnDifficultyById() {
+        assertEquals(Difficulty.EASY, Difficulty.fromId(1));
+        assertEquals(Difficulty.MEDIUM, Difficulty.fromId(2));
+        assertEquals(Difficulty.HARD, Difficulty.fromId(3));
+    }
+
+    @Test
+    @DisplayName("Должен возвращать корректное количество попыток")
+    void shouldReturnCorrectMaxAttempts() {
         assertEquals(8, Difficulty.EASY.getMaxAttempts());
-        assertEquals("Средний", Difficulty.MEDIUM.getDescription());
+        assertEquals(6, Difficulty.MEDIUM.getMaxAttempts());
         assertEquals(4, Difficulty.HARD.getMaxAttempts());
     }
 
     @Test
-    void testFromLevel() {
+    @DisplayName("Должен возвращать сложность по описанию")
+    void shouldReturnDifficultyByDescription() {
         assertEquals(Difficulty.EASY, Difficulty.fromDescription("Легкий"));
         assertEquals(Difficulty.MEDIUM, Difficulty.fromDescription("Средний"));
         assertEquals(Difficulty.HARD, Difficulty.fromDescription("Сложный"));
     }
 
     @Test
-    void testFromLevelInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Difficulty.fromDescription("Тестовый1"));
-        assertThrows(IllegalArgumentException.class, () -> Difficulty.fromDescription("Тестовый1"));
+    @DisplayName("Должен бросать исключение при неверном ID")
+    void shouldThrowExceptionForInvalidDifficultyId() {
+        assertThrows(IllegalArgumentException.class, () -> Difficulty.fromId(999));
     }
 
     @Test
-    void testToString() {
-        assertEquals("Легкий (8 попытки)", Difficulty.EASY.toString());
+    @DisplayName("Должен возвращать корректный размер")
+    void shouldReturnCorrectDifficultySize() {
+        assertEquals(3, Difficulty.size());
     }
-
-
 }

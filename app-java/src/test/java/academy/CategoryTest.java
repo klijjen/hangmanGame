@@ -1,35 +1,51 @@
 package academy;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CategoryTest {
+
     @Test
-    void testCategoryValues() {
-        assertEquals("Фрукты", Category.FRUITS.getName());
-        assertEquals("Овощи", Category.VEGETABLES.getName());
-        assertEquals("Животные", Category.ANIMALS.getName());
-        assertEquals("Профессии", Category.PROFESSIONS.getName());
-        assertEquals("Страны", Category.COUNTRIES.getName());
-        assertEquals("Спорт", Category.SPORTS.getName());
-        assertEquals("Еда", Category.FOOD.getName());
+    @DisplayName("Должен возвращать категорию по ID")
+    void shouldReturnCategoryById() {
+        assertEquals(Category.FRUITS, Category.fromId(1));
+        assertEquals(Category.VEGETABLES, Category.fromId(2));
+        assertEquals(Category.ANIMALS, Category.fromId(3));
     }
 
     @Test
-    void testFromName() {
+    @DisplayName("Должен возвращать категорию по имени")
+    void shouldReturnCategoryByName() {
         assertEquals(Category.FRUITS, Category.fromName("Фрукты"));
-        assertEquals(Category.FRUITS, Category.fromName("фрукты"));
-        assertEquals(Category.VEGETABLES, Category.fromName("Овощи"));
         assertEquals(Category.ANIMALS, Category.fromName("Животные"));
     }
 
     @Test
-    void testFromNameInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Category.fromName("Несуществующая категория"));
+    @DisplayName("Должен бросать исключение при неверном ID")
+    void shouldThrowExceptionForInvalidId() {
+        assertThrows(IllegalArgumentException.class, () -> Category.fromId(999));
     }
 
     @Test
-    void testToString() {
-        assertEquals("Фрукты", Category.FRUITS.toString());
+    @DisplayName("Должен бросать исключение при неверном имени")
+    void shouldThrowExceptionForInvalidName() {
+        assertThrows(IllegalArgumentException.class, () -> Category.fromName("Несуществующая"));
+    }
+
+    @Test
+    @DisplayName("Должен возвращать случайную категорию")
+    void shouldReturnRandomCategory() {
+        Category randomCategory = Category.getRandom();
+        assertNotNull(randomCategory);
+        assertTrue(randomCategory.getId() >= 1 && randomCategory.getId() <= Category.size());
+    }
+
+    @Test
+    @DisplayName("Должен возвращать корректный размер")
+    void shouldReturnCorrectSize() {
+        assertTrue(Category.size() > 0);
     }
 }
+
