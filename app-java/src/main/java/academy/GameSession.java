@@ -1,6 +1,6 @@
 package academy;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class GameSession {
@@ -9,17 +9,20 @@ public class GameSession {
     private final Set<Character> guessedLetters;
     private final int maxAttempts;
     private int wrongAttempts;
+    private int correctLettersCount;
     private boolean gameOver;
     private boolean gameWon;
 
     public GameSession(Word targetWord, Difficulty difficulty) {
         this.targetWord = targetWord;
         this.difficulty = difficulty;
-        this.guessedLetters = new HashSet<>();
+        this.guessedLetters = new LinkedHashSet<>();
         this.maxAttempts = difficulty.getMaxAttempts();
         this.wrongAttempts = 0;
+        this.correctLettersCount = 0;
         this.gameOver = false;
         this.gameWon = false;
+//        this.clueUsed = false;
     }
 
     public GuessResult guessLetter(char letter) {
@@ -34,10 +37,13 @@ public class GameSession {
         }
 
         guessedLetters.add(lowerLetter);
-        boolean isCorrect = targetWord.containsLetter(letter);
+        boolean isCorrect = targetWord.containsLetter(lowerLetter);
 
         if (!isCorrect) {
             wrongAttempts++;
+        }
+        else {
+            correctLettersCount++;
         }
 
         checkGameState();
@@ -55,12 +61,7 @@ public class GameSession {
     }
 
     public boolean isWordGuessed() {
-        for (char c : targetWord.getWord().toLowerCase().toCharArray()) {
-            if (!guessedLetters.contains(c)) {
-                return false;
-            }
-        }
-        return true;
+        return correctLettersCount == targetWord.targetLetterCount;
     }
 
     public String getCurrentState() {
@@ -72,12 +73,12 @@ public class GameSession {
                 state.append('_');
             }
         }
-        return state.toString().trim();
+        return state.toString();
     }
 
     public Word getTargetWord() { return targetWord; }
     public Difficulty getDifficulty() { return difficulty; }
-    public Set<Character> getGuessedLetters() { return new HashSet<>(guessedLetters); }
+    public Set<Character> getGuessedLetters() { return guessedLetters; }
     public int getMaxAttempts() { return maxAttempts; }
     public int getWrongAttempts() { return wrongAttempts; }
     public int getRemainingAttempts() { return maxAttempts - wrongAttempts; }

@@ -2,19 +2,21 @@ package academy;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Dictionary {
     private List<Word> words;
     private final Random random;
+    private static final Logger logger = Logger.getLogger(Dictionary.class.getName());
+
 
     public Dictionary() {
         try {
             this.words = WordLoader.loadFromJson("words.json");
         }
         catch (WordLoadException e) {
-            System.err.println("Ошибка загрузки словаря: " + e.getMessage());
-            System.out.println("Используется стандартный словарь");
+            logger.log(Level.WARNING, "Ошибка загрузки словаря из файла, используется стандартный словарь", e);
             this.words = WordLoader.getDefaultWords();
         }
         this.random = new Random();

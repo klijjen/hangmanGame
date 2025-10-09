@@ -1,10 +1,12 @@
 package academy;
 
-import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ConsoleIO {
     private final Scanner scanner;
+    final Set<String> yes = Set.of("да", "д", "yes", "y");
+    final Set<String> no = Set.of("нет", "н", "no", "n");
 
     public ConsoleIO() {
         this.scanner = new Scanner(System.in);
@@ -45,15 +47,12 @@ public class ConsoleIO {
                 String input = scanner.nextLine().trim();
 
                 if (input.isEmpty()) {
-                    int choice = new Random().nextInt(min, max);
-                    System.out.println("Ваш выбор: " + choice + '\n');
-                    return choice;
+                    return -1;
                 }
 
                 int choice = Integer.parseInt(input);
 
                 if (choice >= min && choice <= max) {
-                    System.out.println("Ваш выбор: " + choice + '\n');
                     return choice;
                 }
 
@@ -74,7 +73,13 @@ public class ConsoleIO {
 
        int choice = readMenuChoice(1, Category.size());
 
-       return Category.fromId(choice);
+       if (choice == -1) {
+            choice = Category.getRandom();
+       }
+       Category category = Category.fromId(choice);
+
+       System.out.println("Ваш выбор: " + choice + '\n');
+       return category;
 
     }
     public Difficulty selectDifficulty() {
@@ -84,9 +89,15 @@ public class ConsoleIO {
         }
         System.out.print("\nВведите номер уровня сложности (или нажмите Enter для случайного выбора): ");
 
-       int choice = readMenuChoice(1, Difficulty.size());
+        int choice = readMenuChoice(1, Difficulty.size());
 
-       return Difficulty.fromId(choice);
+        if (choice == -1) {
+            choice = Difficulty.getRandom();
+        }
+        Difficulty difficulty = Difficulty.fromId(choice);
+
+        System.out.println("Ваш выбор: " + choice + '\n');
+        return difficulty;
 
     }
 
@@ -103,17 +114,16 @@ public class ConsoleIO {
             System.out.print("\nХотите сыграть еще раз? (да/нет): ");
             String answer = scanner.nextLine().trim().toLowerCase();
 
-            if (answer.equals("да") || answer.equals("д") || answer.equals("yes") || answer.equals("y")) {
+            if (yes.contains(answer)) {
                 System.out.println('\n');
                 return true;
             }
-            else if (answer.equals("нет") || answer.equals("н") || answer.equals("no") || answer.equals("n")) {
+            if (no.contains(answer)) {
                 System.out.println('\n');
                 return false;
             }
-            else {
-                System.out.println("Пожалуйста, ответьте 'да' или 'нет'");
-            }
+
+            System.out.println("Пожалуйста, ответьте 'да' или 'нет'");
         }
     }
 

@@ -95,18 +95,9 @@ public class HangmanVisualizer {
     };
 
     public static String getHangmanStage(int wrongAttempts, int maxAttempts) {
-        int stage = 0;
-        if (maxAttempts == 8) {
-            stage += wrongAttempts;
-        }
-        if (maxAttempts == 6) {
-            stage = 2;
-            stage += wrongAttempts;
-        }
-        if (maxAttempts == 4) {
-            stage = 4;
-            stage += wrongAttempts;
-        }
+        int totalStages = HANGMAN_STAGES.length - 1;
+        int stage = (int) Math.round((double) wrongAttempts / maxAttempts * totalStages);
+        stage = Math.min(stage, totalStages);
         return HANGMAN_STAGES[stage];
     }
 

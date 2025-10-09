@@ -23,14 +23,6 @@ class DifficultyTest {
     }
 
     @Test
-    @DisplayName("Должен возвращать сложность по описанию")
-    void shouldReturnDifficultyByDescription() {
-        assertEquals(Difficulty.EASY, Difficulty.fromDescription("Легкий"));
-        assertEquals(Difficulty.MEDIUM, Difficulty.fromDescription("Средний"));
-        assertEquals(Difficulty.HARD, Difficulty.fromDescription("Сложный"));
-    }
-
-    @Test
     @DisplayName("Должен бросать исключение при неверном ID")
     void shouldThrowExceptionForInvalidDifficultyId() {
         assertThrows(IllegalArgumentException.class, () -> Difficulty.fromId(999));

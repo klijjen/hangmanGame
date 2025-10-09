@@ -13,7 +13,7 @@ public class Main {
 
         // Интерактивный режим (без аргументов)
         else if (args.length == 0) {
-            GameEngine game = new GameEngine();
+            GameEngine game = new GameEngine(WordLoader.createDictionaryFromJson("words.json"), new ConsoleIO(), new GameStats());
             game.startInteractiveGame();
         }
 

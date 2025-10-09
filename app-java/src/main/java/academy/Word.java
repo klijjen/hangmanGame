@@ -2,12 +2,17 @@ package academy;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Word {
-    private String word;
-    private Category category;
-    private String clue;
+    private final String word;
+    private final Category category;
+    private final String clue;
+    private final Set<Character> targetLetters;
+    public final int targetLetterCount;
+
 
     @JsonCreator
     public Word(@JsonProperty("word") String word,
@@ -16,6 +21,12 @@ public class Word {
         this.word = word;
         this.category = category;
         this.clue = clue;
+
+        this.targetLetters = new HashSet<>();
+        for (char c : word.toCharArray()) {
+            targetLetters.add(Character.toLowerCase(c));
+        }
+        this.targetLetterCount = targetLetters.size();
     }
 
     public String getWord() {
@@ -35,7 +46,7 @@ public class Word {
     }
 
     public boolean containsLetter (char letter) {
-        return word.toLowerCase().indexOf(Character.toLowerCase(letter)) >= 0;
+        return targetLetters.contains(Character.toLowerCase(letter));
     }
 
     @Override

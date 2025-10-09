@@ -14,6 +14,8 @@ public enum Category {
     private final int id;
     private final String name;
 
+    private static final Random random = new Random();
+
     Category(int id, String name) {
         this.id = id;
         this.name = name;
@@ -36,14 +38,14 @@ public enum Category {
         throw new IllegalArgumentException("Неизвестная категория: " + id);
     }
 
-    public static Category fromName(String name) {
-        for (Category category : values()) {
-            if (category.name.equals(name)) {
-                return category;
-            }
-        }
-        throw new IllegalArgumentException("Неизвестная категория: " + name);
-    }
+//    public static Category fromName(String name) {
+//        for (Category category : values()) {
+//            if (category.name.equalsIgnoreCase(name)) {
+//                return category;
+//            }
+//        }
+//        throw new IllegalArgumentException("Неизвестная категория: " + name);
+//    }
 
     @Override
     public String toString() {
@@ -54,8 +56,7 @@ public enum Category {
         return values().length;
     }
 
-    public static Category getRandom() {
-        int random = new Random().nextInt(size());
-        return Category.fromId(random);
+    public static int getRandom() {
+        return random.nextInt(values().length) + 1;
     }
 }

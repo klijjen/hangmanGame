@@ -1,5 +1,7 @@
 package academy;
 
+import java.util.Random;
+
 public enum Difficulty {
     EASY(1, 8, "Легкий"),
     MEDIUM(2, 6, "Средний"),
@@ -8,6 +10,8 @@ public enum Difficulty {
     private final int id;
     private final int maxAttempts;
     private final String description;
+
+    private static final Random random = new Random();
 
     Difficulty(int id, int maxAttempts, String description) {
         this.id = id;
@@ -27,15 +31,6 @@ public enum Difficulty {
         return description;
     }
 
-    public static Difficulty fromDescription(String description) {
-        for (Difficulty difficulty : values()) {
-            if (difficulty.description.equals(description)) {
-                return difficulty;
-            }
-        }
-        throw new IllegalArgumentException("Неизвестный уровень сложности: " + description);
-    }
-
     public static Difficulty fromId(int id) {
         for (Difficulty difficulty : values()) {
             if (difficulty.id == id ) {
@@ -52,5 +47,9 @@ public enum Difficulty {
 
     public static int size() {
         return values().length;
+    }
+
+    public static int getRandom() {
+        return random.nextInt(values().length) + 1;
     }
 }

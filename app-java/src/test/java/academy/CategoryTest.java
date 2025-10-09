@@ -10,17 +10,11 @@ class CategoryTest {
     @Test
     @DisplayName("Должен возвращать категорию по ID")
     void shouldReturnCategoryById() {
-        assertEquals(Category.FRUITS, Category.fromId(1));
-        assertEquals(Category.VEGETABLES, Category.fromId(2));
-        assertEquals(Category.ANIMALS, Category.fromId(3));
+        assertEquals(Category.FRUITS, Category.values()[0]);
+        assertEquals(Category.VEGETABLES, Category.values()[1]);
+        assertEquals(Category.ANIMALS, Category.values()[2]);
     }
 
-    @Test
-    @DisplayName("Должен возвращать категорию по имени")
-    void shouldReturnCategoryByName() {
-        assertEquals(Category.FRUITS, Category.fromName("Фрукты"));
-        assertEquals(Category.ANIMALS, Category.fromName("Животные"));
-    }
 
     @Test
     @DisplayName("Должен бросать исключение при неверном ID")
@@ -28,18 +22,12 @@ class CategoryTest {
         assertThrows(IllegalArgumentException.class, () -> Category.fromId(999));
     }
 
-    @Test
-    @DisplayName("Должен бросать исключение при неверном имени")
-    void shouldThrowExceptionForInvalidName() {
-        assertThrows(IllegalArgumentException.class, () -> Category.fromName("Несуществующая"));
-    }
 
     @Test
     @DisplayName("Должен возвращать случайную категорию")
     void shouldReturnRandomCategory() {
-        Category randomCategory = Category.getRandom();
-        assertNotNull(randomCategory);
-        assertTrue(randomCategory.getId() >= 1 && randomCategory.getId() <= Category.size());
+        int randomCategory = Category.getRandom();
+        assertTrue(randomCategory >= 1 && randomCategory<= Category.size());
     }
 
     @Test

@@ -6,33 +6,20 @@ public class GameEngine {
     private final GameStats gameStats;
     private boolean playing;
 
-    public GameEngine() {
-        this.dictionary = WordLoader.createDictionaryFromJson("words.json");
-        this.consoleIO = new ConsoleIO();
-        this.gameStats = new GameStats();
+    public GameEngine(Dictionary dictionary, ConsoleIO consoleIO, GameStats gameStats) {
+//        this.dictionary = WordLoader.createDictionaryFromJson("words.json");
+        this.dictionary = dictionary;
+        this.consoleIO = consoleIO;
+        this.gameStats = gameStats;
         this.playing = true;
     }
 
     public static String startNonInteractiveGame(String targetWord, String guessedWord) {
         validateWords(targetWord, guessedWord);
 
-        StringBuilder result = new StringBuilder();
-        String lowGuessedWord = guessedWord.toLowerCase();
-        boolean allCorrect = true;
+        GuessResult result = WordChecker.checkGuess(targetWord, guessedWord);
 
-        for (int i = 0; i < targetWord.length(); i++) {
-            char targetChar = Character.toLowerCase(targetWord.charAt(i));
-
-            if (lowGuessedWord.indexOf(targetChar) >= 0) {
-                result.append(targetWord.charAt(i));
-            }
-            else {
-                result.append('*');
-                allCorrect = false;
-            }
-        }
-
-        return result.toString() + ";" + (allCorrect ? "POS" : "NEG");
+        return result.message() + ";" + (result.isCorrect() ? "POS" : "NEG");
     }
 
     public void startInteractiveGame() {
@@ -95,7 +82,6 @@ public class GameEngine {
     }
 
     private void displayGameResult(GameSession session) {
-        // Показываем финальное состояние
         consoleIO.displayGameState(HangmanVisualizer.getGameStateDisplay(session));
 
         if (session.isGameWon()) {

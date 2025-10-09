@@ -32,7 +32,7 @@ class GameEngineTest {
     @DisplayName("Должен корректно создавать экземпляр GameEngine")
     void shouldCreateGameEngine() {
         assertDoesNotThrow(() -> {
-            GameEngine engine = new GameEngine();
+            GameEngine engine = new GameEngine(WordLoader.createDictionaryFromJson("words.json"), new ConsoleIO(), new GameStats());
             assertNotNull(engine);
         });
     }
