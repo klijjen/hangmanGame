@@ -1,4 +1,14 @@
-package academy;
+package academy.service;
+
+import academy.ui.ConsoleIO;
+import academy.domain.Dictionary;
+import academy.domain.Difficulty;
+import academy.domain.GameSession;
+import academy.domain.GameStats;
+import academy.domain.GuessResult;
+import academy.ui.HangmanVisualizer;
+import academy.domain.Word;
+import academy.domain.Category;
 
 public class GameEngine {
     private final Dictionary dictionary;

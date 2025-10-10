@@ -1,6 +1,6 @@
-package academy;
+package academy.exception;
 
-class WordLoadException extends RuntimeException {
+public class WordLoadException extends RuntimeException {
     public WordLoadException(String message) {
         super(message);
     }

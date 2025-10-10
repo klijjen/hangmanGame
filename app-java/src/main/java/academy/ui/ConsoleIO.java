@@ -1,5 +1,7 @@
-package academy;
+package academy.ui;
 
+import academy.domain.Category;
+import academy.domain.Difficulty;
 import java.util.Scanner;
 import java.util.Set;
 

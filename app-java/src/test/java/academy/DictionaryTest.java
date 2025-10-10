@@ -1,5 +1,8 @@
 package academy;
 
+import academy.domain.Category;
+import academy.domain.Dictionary;
+import academy.domain.Word;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;

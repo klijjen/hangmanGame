@@ -1,5 +1,10 @@
 package academy;
 
+import academy.domain.Category;
+import academy.domain.Difficulty;
+import academy.domain.GameSession;
+import academy.domain.GuessResult;
+import academy.domain.Word;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;

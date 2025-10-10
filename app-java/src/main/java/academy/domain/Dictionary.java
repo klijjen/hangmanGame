@@ -1,5 +1,7 @@
-package academy;
+package academy.domain;
 
+import academy.exception.WordLoadException;
+import academy.service.WordLoader;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;

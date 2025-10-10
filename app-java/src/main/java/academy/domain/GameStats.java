@@ -1,4 +1,4 @@
-package academy;
+package academy.domain;
 
 public class GameStats {
     private int gamesPlayed;

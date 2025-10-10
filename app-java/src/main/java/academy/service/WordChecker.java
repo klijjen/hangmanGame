@@ -1,5 +1,6 @@
-package academy;
+package academy.service;
 
+import academy.domain.GuessResult;
 import java.util.HashSet;
 import java.util.Set;
 

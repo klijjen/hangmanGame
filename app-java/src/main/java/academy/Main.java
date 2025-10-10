@@ -1,5 +1,10 @@
 package academy;
 
+import academy.domain.GameStats;
+import academy.service.GameEngine;
+import academy.service.WordLoader;
+import academy.ui.ConsoleIO;
+
 public class Main {
     public static void main(String[] args) {
         String[] processedArgs = processSpringBootArgs(args);

@@ -1,5 +1,9 @@
-package academy;
+package academy.service;
 
+import academy.domain.Word;
+import academy.exception.WordLoadException;
+import academy.domain.Category;
+import academy.domain.Dictionary;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;

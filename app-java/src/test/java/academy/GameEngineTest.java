@@ -1,5 +1,9 @@
 package academy;
 
+import academy.domain.GameStats;
+import academy.service.GameEngine;
+import academy.service.WordLoader;
+import academy.ui.ConsoleIO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.BeforeEach;

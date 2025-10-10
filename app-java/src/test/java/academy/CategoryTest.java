@@ -1,5 +1,6 @@
 package academy;
 
+import academy.domain.Category;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 

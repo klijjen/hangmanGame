@@ -1,4 +1,4 @@
-package academy;
+package academy.domain;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

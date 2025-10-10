@@ -1,4 +1,6 @@
-package academy;
+package academy.ui;
+
+import academy.domain.GameSession;
 
 public class HangmanVisualizer {
     private static final String[] HANGMAN_STAGES = {
